@@ -8,7 +8,6 @@
  */
 package com.nlc.read.test;
 
-import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -79,7 +78,7 @@ public class TestInterface {
 		System.out.println("请求参数value为:" + sendDataString);
 		String result = HttpUtil.doPost(url, "cmd=" + cmd + "&value=" + URLEncoder.encode(sendDataString));
 		try {
-			Thread.sleep(4000);
+			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -204,8 +203,13 @@ public class TestInterface {
 		String cmd = "qryFriendLinkList";
 		this.excute(cmd);
 	}
-	
-	
+
+	/**
+	 * 
+	 * @Title: qryResourceInfo
+	 * @Description: 获取图书资源 void
+	 * @throws
+	 */
 	@Test
 	public void qryResourceInfo() {
 		Map qryResourceInfoMap = new HashMap<String, Object>();
@@ -216,7 +220,13 @@ public class TestInterface {
 		String cmd = "qryResourceInfo";
 		this.excute(cmd);
 	}
-	
+
+	/**
+	 * 
+	 * @Title: qryChapterList
+	 * @Description: 获取章节列表 void
+	 * @throws
+	 */
 	@Test
 	public void qryChapterList() {
 		Map qryChapterListMap = new HashMap<String, Object>();
@@ -229,15 +239,66 @@ public class TestInterface {
 		String cmd = "qryChapterList";
 		this.excute(cmd);
 	}
+
+	/**
+	 * 
+	 * @Title: qryChapterDetails
+	 * @Description:获取章节内容 void
+	 * @throws
+	 */
 	@Test
 	public void qryChapterDetails() {
 		Map qryChapterDetailsMap = new HashMap<String, Object>();
 		qryChapterDetailsMap.put("timeStamp", timeStamp);
-		qryChapterDetailsMap.put("chapterId", 240L);
+		qryChapterDetailsMap.put("chapterId", 239L);
 		String t21 = JSON.toJSONString(qryChapterDetailsMap);
 		datas.put("qryChapterDetails", DESUtil.encrypt(t21, Constants.PUBLIC_DES_KEY));
 		String cmd = "qryChapterDetails";
 		this.excute(cmd);
+	}
+
+	/**
+	 * 
+	 * @Title: loginTest
+	 * @Description:登录 void
+	 * @throws
+	 */
+	@Test
+	public void loginTest() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("account", "test0002");
+		paramMap.put("pwd", "12345678");
+		paramMap.put("validateCode", "validateCode");
+		String t32 = JSON.toJSONString(paramMap);
+		datas.put("login", DESUtil.encrypt(t32, Constants.PUBLIC_DES_KEY));
+		String cmd = "login";
+		this.excute(cmd);
+	}
+
+	/**
+	 * 
+	 * @Title: registerTest
+	 * @Description: 注册 void
+	 * @throws
+	 */
+	@Test
+	public void registerTest() {
+
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("account", "test0002");
+		paramMap.put("phone", "13175286561");
+		paramMap.put("name", "test0002");
+		paramMap.put("identityCard", "330621199012264234");
+		paramMap.put("pwd", "12345678");
+		paramMap.put("confirmPwd", "12345678");
+		paramMap.put("validateCode", "validateCode");
+		String t32 = JSON.toJSONString(paramMap);
+		datas.put("register", DESUtil.encrypt(t32, Constants.PUBLIC_DES_KEY));
+		String cmd = "register";
+		this.excute(cmd);
+
 	}
 
 }
