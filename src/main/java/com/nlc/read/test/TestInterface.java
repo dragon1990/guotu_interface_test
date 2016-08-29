@@ -231,7 +231,7 @@ public class TestInterface {
 	public void qryChapterDetails() {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("timeStamp", timeStamp);
-		paramMap.put("chapterId", 239L);
+		paramMap.put("chapterId", 306L);
 		String t21 = JSON.toJSONString(paramMap);
 		datas.put("qryChapterDetails", DESUtil.encrypt(t21, Constants.PUBLIC_DES_KEY));
 		String cmd = "qryChapterDetails";
