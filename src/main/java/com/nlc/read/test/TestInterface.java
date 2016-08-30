@@ -231,7 +231,7 @@ public class TestInterface {
 	public void qryChapterDetails() {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("timeStamp", timeStamp);
-		paramMap.put("chapterId", 306L);
+		paramMap.put("chapterId", 5279L);
 		String t21 = JSON.toJSONString(paramMap);
 		datas.put("qryChapterDetails", DESUtil.encrypt(t21, Constants.PUBLIC_DES_KEY));
 		String cmd = "qryChapterDetails";
@@ -295,7 +295,7 @@ public class TestInterface {
 	public void qryMagInfoTest() {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("timeStamp", timeStamp);
-		paramMap.put("magId", 1);
+		paramMap.put("magId", 5279);
 		String t41 = JSON.toJSONString(paramMap);
 		datas.put("qryMagInfo", DESUtil.encrypt(t41, Constants.PUBLIC_DES_KEY));
 		String cmd = "qryMagInfo";
@@ -313,12 +313,23 @@ public class TestInterface {
 	public void qryMagArticleListTest() {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("timeStamp", timeStamp);
-		paramMap.put("magId", 1);
+		paramMap.put("magId", 5279);
 		paramMap.put("pageNum", 1);
-		paramMap.put("pageSize", 1);
+		paramMap.put("pageSize", 10);
 		String t42 = JSON.toJSONString(paramMap);
 		datas.put("qryMagArticleList", DESUtil.encrypt(t42, Constants.PUBLIC_DES_KEY));
 		String cmd = "qryMagArticleList";
+		this.excute(cmd);
+	}
+	
+	@Test
+	public void qryMagArticleDetailTest() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("articleId", 795520);
+		String t42 = JSON.toJSONString(paramMap);
+		datas.put("qryMagArticleDetail", DESUtil.encrypt(t42, Constants.PUBLIC_DES_KEY));
+		String cmd = "qryMagArticleDetail";
 		this.excute(cmd);
 	}
 }

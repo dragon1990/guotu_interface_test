@@ -1,0 +1,1 @@
+with sql1 as (select mag.brand_id, mag.brand_name, mag.category_id, mag.period, mag.publish_status, mag.modify_time, count (mag.mag_name) as magscount, "category"."name" from mag,category where mag.category_id = category.category_id group by mag.brand_id,mag.brand_name,mag.category_id,"category"."name",mag.period,mag.publish_status,mag.modify_time) select count(1) from sql1
