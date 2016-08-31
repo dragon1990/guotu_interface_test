@@ -332,4 +332,25 @@ public class TestInterface {
 		String cmd = "qryMagArticleDetail";
 		this.excute(cmd);
 	}
+	
+	@Test
+	public void qryCategoryListTest1() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("resourceType", 1L);
+		String t42 = JSON.toJSONString(paramMap);
+		datas.put("qryCategoryList", DESUtil.encrypt(t42, Constants.PUBLIC_DES_KEY));
+		String cmd = "qryCategoryList";
+		this.excute(cmd);
+	}
+	@Test
+	public void qryCategoryListTest2() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("resourceType", 2L);
+		String t42 = JSON.toJSONString(paramMap);
+		datas.put("qryCategoryList", DESUtil.encrypt(t42, Constants.PUBLIC_DES_KEY));
+		String cmd = "qryCategoryList";
+		this.excute(cmd);
+	}
 }
