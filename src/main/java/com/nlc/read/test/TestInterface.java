@@ -151,6 +151,24 @@ public class TestInterface {
 		this.excute(cmd);
 	}
 
+	
+	/**
+	 * 
+	 * @Title: qryMessageDetailTest
+	 * @Description: 获取公告明细
+	 * @throws
+	 */
+	@Test
+	public void qryMessageDetailTest() {
+
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("msgId", 1);
+		String t2 = JSON.toJSONString(paramMap);
+		datas.put("qryMessageDetail", DESUtil.encrypt(t2, Constants.PUBLIC_DES_KEY));
+		String cmd = "qryMessageDetail";
+		this.excute(cmd);
+	}
 	/**
 	 * 
 	 * @Title: qryBannerList
@@ -326,7 +344,7 @@ public class TestInterface {
 	public void qryMagArticleDetailTest() {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("timeStamp", timeStamp);
-		paramMap.put("articleId", 795520);
+		paramMap.put("articleId", 63579);
 		String t42 = JSON.toJSONString(paramMap);
 		datas.put("qryMagArticleDetail", DESUtil.encrypt(t42, Constants.PUBLIC_DES_KEY));
 		String cmd = "qryMagArticleDetail";
