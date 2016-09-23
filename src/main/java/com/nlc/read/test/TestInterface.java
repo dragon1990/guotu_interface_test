@@ -29,8 +29,8 @@ import java.util.Map;
  */
 public class TestInterface {
 
-	private static final String url = "http://localhost:8080/readhome/service.do";
-	//private static final String url = "	http://192.168.15.182:8080/nlc_read_home/service.do";
+	private static final String url = "http://localhost:8080/nlc_read_home/service.do";
+	//private static final String url = "http://192.168.8.77/nlc_read_home/service.do";
 
 	private static HashMap<String, String> datas = new HashMap<String, String>();
 	private Long timeStamp = System.currentTimeMillis();
@@ -63,6 +63,40 @@ public class TestInterface {
 		System.out.println("返回数据为：");
 		System.out.println(result);
 
+	}
+
+
+	@Test
+	public void qryPoetryList() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("yearValue", 2016);
+		paramMap.put("monthValue", 8);
+		paramMap.put("pageSize", 10);
+		paramMap.put("pageNum", 1);
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("qryPoetryList", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "qryPoetryList";
+		this.excute(cmd);
+	}
+	@Test
+	public void qryPoetryDate() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("qryPoetryDate", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "qryPoetryDate";
+		this.excute(cmd);
+	}
+
+	@Test
+	public void qryPoetry() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("qryPoetry", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "qryPoetry";
+		this.excute(cmd);
 	}
 
 	/**
