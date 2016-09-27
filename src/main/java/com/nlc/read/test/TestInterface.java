@@ -65,6 +65,105 @@ public class TestInterface {
 
 	}
 
+	@Test
+	public void delComment() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("commentId", 10);
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("delComment", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "delComment";
+		this.excute(cmd);
+	}
+
+	@Test
+	public void qryReadUserInfo() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("userId", 1);
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("qryReadUserInfo", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "qryReadUserInfo";
+		this.excute(cmd);
+	}
+	@Test
+	public void qryMyFeedbackList() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("userId", 1);
+		paramMap.put("pageSize", 10);
+		paramMap.put("pageNum",1);
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("qryMyFeedbackList", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "qryMyFeedbackList";
+		this.excute(cmd);
+	}
+	@Test
+	public void addFeedback() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("userId", 1);
+		paramMap.put("type", 0);
+		paramMap.put("content","测试留言");
+		paramMap.put("attachInfos","attachInfos");
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("addFeedback", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "addFeedback";
+		this.excute(cmd);
+	}
+	@Test
+	public void addComment() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("resType", 1);
+		paramMap.put("resId", 3);
+		paramMap.put("userId",1);
+		paramMap.put("content","asdasd");
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("addComment", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "addComment";
+		this.excute(cmd);
+	}
+	@Test
+	public void qryCommentList() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("resType", 1);
+		paramMap.put("resId", 4);
+		paramMap.put("pageSize", 10);
+		paramMap.put("pageNum",1);
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("qryCommentList", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "qryCommentList";
+		this.excute(cmd);
+	}
+
+	@Test
+	public void setCommendFlag() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("resType", 1);
+		paramMap.put("resId", 3);
+		paramMap.put("userId", 4);
+		paramMap.put("flag",1);
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("setCommendFlag", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "setCommendFlag";
+		this.excute(cmd);
+	}
+
+	@Test
+	public void qryCommendNum() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("resType", 1);
+		paramMap.put("resId", 3);
+		paramMap.put("userId", 1);
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("qryCommendNum", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "qryCommendNum";
+		this.excute(cmd);
+	}
 
 	@Test
 	public void qryPoetryList() {
