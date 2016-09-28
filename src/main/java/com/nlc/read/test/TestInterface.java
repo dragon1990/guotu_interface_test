@@ -30,7 +30,7 @@ import java.util.Map;
 public class TestInterface {
 
 	private static final String url = "http://localhost:8080/nlc_read_home/service.do";
-	//private static final String url = "http://192.168.8.77/nlc_read_home/service.do";
+	//private static final String url = "http://122.224.218.58:8088/nlc_read_home/service.do";
 
 	private static HashMap<String, String> datas = new HashMap<String, String>();
 	private Long timeStamp = System.currentTimeMillis();
@@ -65,6 +65,73 @@ public class TestInterface {
 
 	}
 
+
+	@Test
+	public void setBookrack() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("userId", 1);
+		paramMap.put("resType", 2);
+		paramMap.put("resId", 4);
+		paramMap.put("chapterId",1);
+		paramMap.put("chapterName","dd");
+		paramMap.put("status",1);
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("setBookrack", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "setBookrack";
+		this.excute(cmd);
+	}
+	@Test
+	public void qryBookrack() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("userId", 1);
+		paramMap.put("resType", 2);
+		paramMap.put("resId",4);
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("qryBookrack", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "qryBookrack";
+		this.excute(cmd);
+	}
+
+	@Test
+	public void qryCollect() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("userId", 1);
+		paramMap.put("resType", 2);
+		paramMap.put("resId", 3);
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("qryCollect", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "qryCollect";
+		this.excute(cmd);
+	}
+
+	@Test
+	public void setCollect() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("userId", 1);
+		paramMap.put("resType", 2);
+		paramMap.put("resId", 3);
+		paramMap.put("status",1);
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("setCollect", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "setCollect";
+		this.excute(cmd);
+	}
+	@Test
+	public void qryUgcInfo() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("siteId", 1);
+		paramMap.put("dataId",76);
+		paramMap.put("dataType",1);
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("qryUgcInfo", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "qryUgcInfo";
+		this.excute(cmd);
+	}
 	@Test
 	public void delComment() {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
@@ -118,7 +185,7 @@ public class TestInterface {
 		paramMap.put("resType", 1);
 		paramMap.put("resId", 3);
 		paramMap.put("userId",1);
-		paramMap.put("content","asdasd");
+		paramMap.put("content","asdaswwwwwwd");
 		String t1 = JSON.toJSONString(paramMap);
 		datas.put("addComment", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
 		String cmd = "addComment";
@@ -157,7 +224,7 @@ public class TestInterface {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("timeStamp", timeStamp);
 		paramMap.put("resType", 1);
-		paramMap.put("resId", 3);
+		paramMap.put("resId", 4);
 		paramMap.put("userId", 1);
 		String t1 = JSON.toJSONString(paramMap);
 		datas.put("qryCommendNum", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
