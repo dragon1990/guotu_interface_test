@@ -40,7 +40,7 @@ public class TestInterface {
 	public void excute(String cmd) {
 		ReqValue reqValue = new ReqValue();
 		reqValue.setSiteId(1L);
-		reqValue.setUserId(10004L);
+		reqValue.setUserId(1L);
 		reqValue.setFromSource(3);
 		reqValue.setOsType(5);
 		reqValue.setVersion("1.0.1");
@@ -62,9 +62,68 @@ public class TestInterface {
 		}
 		System.out.println("返回数据为：");
 		System.out.println(result);
-
 	}
 
+	@Test
+	public void qryMyReadRecord() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("pageSize", 10);
+		paramMap.put("pageNum",1);
+		//paramMap.put("uaInfo",MD5Util.digest("dragon").toLowerCase());
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("qryMyReadRecord", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "qryMyReadRecord";
+		this.excute(cmd);
+	}
+
+	@Test
+	public void delMyBookrack() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("bookrackId", 41);
+		//paramMap.put("uaInfo",MD5Util.digest("dragon").toLowerCase());
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("delMyBookrack", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "delMyBookrack";
+		this.excute(cmd);
+	}
+
+
+	@Test
+	public void qryMyBookrack() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("pageSize", 10);
+		paramMap.put("pageNum",1);
+		paramMap.put("uaInfo",MD5Util.digest("dragon").toLowerCase());
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("qryMyBookrack", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "qryMyBookrack";
+		this.excute(cmd);
+	}
+	@Test
+	public void delMyCollect() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("collectId", 5);
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("delMyCollect", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "delMyCollect";
+		this.excute(cmd);
+	}
+
+	@Test
+	public void qryMyCollect() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("pageSize", 10);
+		paramMap.put("pageNum",1);
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("qryMyCollect", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "qryMyCollect";
+		this.excute(cmd);
+	}
 
 	@Test
 	public void setBookrack() {
