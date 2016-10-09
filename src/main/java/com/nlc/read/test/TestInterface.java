@@ -30,7 +30,7 @@ import java.util.Map;
 public class TestInterface {
 
 	private static final String url = "http://localhost:8080/nlc_read_home/service.do";
-	//private static final String url = "http://122.224.218.58:8088/nlc_read_home/service.do";
+//	private static final String url = "http://122.224.218.58:8088/nlc_read_home/service.do";
 
 	private static HashMap<String, String> datas = new HashMap<String, String>();
 	private Long timeStamp = System.currentTimeMillis();
@@ -64,6 +64,79 @@ public class TestInterface {
 		System.out.println(result);
 	}
 
+	@Test
+	public void qryTopicGroupResList() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("groupId", 1);
+		paramMap.put("pageSize", 10);
+		paramMap.put("pageNum",1);
+		//paramMap.put("uaInfo",MD5Util.digest("dragon").toLowerCase());
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("qryTopicGroupResList", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "qryTopicGroupResList";
+		this.excute(cmd);
+	}
+	@Test
+	public void qryTopicGroupList() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("topicId", 1);
+		//paramMap.put("uaInfo",MD5Util.digest("dragon").toLowerCase());
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("qryTopicGroupList", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "qryTopicGroupList";
+		this.excute(cmd);
+	}
+	@Test
+	public void qryTopicList() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("pageSize", 10);
+		paramMap.put("pageNum",1);
+		//paramMap.put("uaInfo",MD5Util.digest("dragon").toLowerCase());
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("qryTopicList", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "qryTopicList";
+		this.excute(cmd);
+	}
+	@Test
+	public void qrySiteAdvertList() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("pageSize", 10);
+		paramMap.put("pageNum",1);
+		//paramMap.put("uaInfo",MD5Util.digest("dragon").toLowerCase());
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("qrySiteAdvertList", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "qrySiteAdvertList";
+		this.excute(cmd);
+	}
+
+	@Test
+	public void addReadRecord() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("resType",1);
+		paramMap.put("resId",3);
+		paramMap.put("chapterId",5);
+		paramMap.put("chapterName","测试章44节");
+		paramMap.put("isOffline",2);
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("addReadRecord", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "addReadRecord";
+		this.excute(cmd);
+	}
+	@Test
+	public void qrySiteInfoList() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("name","测");
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("qrySiteInfoList", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "qrySiteInfoList";
+		this.excute(cmd);
+	}
 	@Test
 	public void qryMyReadRecord() {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
@@ -351,6 +424,7 @@ public class TestInterface {
 	public void qrySiteNavList() {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("isDiscoveryShow",1);
 		String t1 = JSON.toJSONString(paramMap);
 		datas.put("qrySiteNavList", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
 		String cmd = "qrySiteNavList";
