@@ -65,6 +65,58 @@ public class TestInterface {
 	}
 
 	@Test
+	public void qryRecommendSysList() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("pageSize", 10);
+		paramMap.put("pageNum", 1);
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("qryRecommendSysList", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "qryRecommendSysList";
+		this.excute(cmd);
+	}
+
+	@Test
+	public void qryRecommendNewList() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("pageSize", 10);
+		paramMap.put("pageNum", 1);
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("qryRecommendNewList", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "qryRecommendNewList";
+		this.excute(cmd);
+	}
+	@Test
+	public void qryRecommendHotList() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("pageSize", 10);
+		paramMap.put("pageNum", 1);
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("qryRecommendHotList", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "qryRecommendHotList";
+		this.excute(cmd);
+	}
+	@Test
+	public void addShare() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("resType", 1);
+		paramMap.put("resId", 2);
+		paramMap.put("shareChannel",3);
+		paramMap.put("title", "title");
+		paramMap.put("content", "content");
+		paramMap.put("linkUrl","linkUrl");
+		paramMap.put("qrLinkUrl","qrLinkUrl");
+		paramMap.put("picUrl", "picUrl");
+		//paramMap.put("uaInfo",MD5Util.digest("dragon").toLowerCase());
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("addShare", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "addShare";
+		this.excute(cmd);
+	}
+	@Test
 	public void qryTopicGroupResList() {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("timeStamp", timeStamp);
@@ -131,7 +183,7 @@ public class TestInterface {
 	public void qrySiteInfoList() {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("timeStamp", timeStamp);
-		paramMap.put("name","测");
+		paramMap.put("name","%");
 		String t1 = JSON.toJSONString(paramMap);
 		datas.put("qrySiteInfoList", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
 		String cmd = "qrySiteInfoList";
