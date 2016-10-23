@@ -29,8 +29,8 @@ import java.util.Map;
  */
 public class TestInterface {
 
-	private static final String url = "http://localhost:8080/nlc_read_home/service.do";
-//	private static final String url = "http://122.224.218.58:8088/nlc_read_home/service.do";
+private static final String url = "http://localhost:8080/nlc_read_home/service.do";
+	//private static final String url = "http://122.224.218.58:8088/nlc_read_home/service.do";
 
 	private static HashMap<String, String> datas = new HashMap<String, String>();
 	private Long timeStamp = System.currentTimeMillis();
@@ -133,7 +133,7 @@ public class TestInterface {
 	public void qryTopicGroupList() {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("timeStamp", timeStamp);
-		paramMap.put("topicId", 1);
+		paramMap.put("topicId", 21);
 		//paramMap.put("uaInfo",MD5Util.digest("dragon").toLowerCase());
 		String t1 = JSON.toJSONString(paramMap);
 		datas.put("qryTopicGroupList", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
@@ -158,6 +158,7 @@ public class TestInterface {
 		paramMap.put("timeStamp", timeStamp);
 		paramMap.put("pageSize", 10);
 		paramMap.put("pageNum",1);
+		paramMap.put("navId",1);
 		//paramMap.put("uaInfo",MD5Util.digest("dragon").toLowerCase());
 		String t1 = JSON.toJSONString(paramMap);
 		datas.put("qrySiteAdvertList", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
@@ -170,7 +171,7 @@ public class TestInterface {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("timeStamp", timeStamp);
 		paramMap.put("resType",1);
-		paramMap.put("resId",3);
+		paramMap.put("resId",7936);
 		paramMap.put("chapterId",5);
 		paramMap.put("chapterName","测试章44节");
 		paramMap.put("isOffline",2);
@@ -221,7 +222,7 @@ public class TestInterface {
 		paramMap.put("timeStamp", timeStamp);
 		paramMap.put("pageSize", 10);
 		paramMap.put("pageNum",1);
-		paramMap.put("uaInfo",MD5Util.digest("dragon").toLowerCase());
+		//paramMap.put("uaInfo",MD5Util.digest("dragon").toLowerCase());
 		String t1 = JSON.toJSONString(paramMap);
 		datas.put("qryMyBookrack", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
 		String cmd = "qryMyBookrack";
@@ -511,6 +512,9 @@ public class TestInterface {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("timeStamp", timeStamp);
 		paramMap.put("columnId", 1);
+		//paramMap.put("columnCode","xstj");
+		//paramMap.put("columnCode","rmtj");
+		paramMap.put("columnCode","xttj");
 		paramMap.put("pageSize", 100);
 		paramMap.put("pageNum", 1);
 		String t1 = JSON.toJSONString(paramMap);
@@ -527,10 +531,9 @@ public class TestInterface {
 	 */
 	@Test
 	public void qryMessageList() {
-
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("timeStamp", timeStamp);
-		paramMap.put("msgType", 2);
+		paramMap.put("msgType", 1);
 		paramMap.put("pageSize", 10);
 		paramMap.put("pageNum", 1);
 		String t2 = JSON.toJSONString(paramMap);
@@ -737,7 +740,7 @@ public class TestInterface {
 	public void qryMagArticleListTest() {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("timeStamp", timeStamp);
-		paramMap.put("magId", 5279);
+		paramMap.put("magId", 7901);
 		paramMap.put("pageNum", 1);
 		paramMap.put("pageSize", 10);
 		String t42 = JSON.toJSONString(paramMap);
@@ -750,7 +753,7 @@ public class TestInterface {
 	public void qryMagArticleDetailTest() {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("timeStamp", timeStamp);
-		paramMap.put("articleId", 63579);
+		paramMap.put("articleId", 122435);
 		String t42 = JSON.toJSONString(paramMap);
 		datas.put("qryMagArticleDetail", DESUtil.encrypt(t42, Constants.WEB_PUBLIC_DES_KEY));
 		String cmd = "qryMagArticleDetail";
