@@ -64,6 +64,31 @@ private static final String url = "http://localhost:8080/nlc_read_home/service.d
 		System.out.println(result);
 	}
 
+
+	@Test
+	public void qryRankingList() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		//paramMap.put("rankType",8);
+		paramMap.put("pageSize", 10);
+		paramMap.put("pageNum", 1);
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("qryRankingList", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "qryRankingList";
+		this.excute(cmd);
+	}
+	@Test
+	public void qryCategoryResList() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("timeStamp", timeStamp);
+		paramMap.put("categoryId",2);
+		paramMap.put("pageSize", 10);
+		paramMap.put("pageNum", 1);
+		String t1 = JSON.toJSONString(paramMap);
+		datas.put("qryCategoryResList", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "qryCategoryResList";
+		this.excute(cmd);
+	}
 	@Test
 	public void qryRecommendSysList() {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
@@ -121,7 +146,7 @@ private static final String url = "http://localhost:8080/nlc_read_home/service.d
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("timeStamp", timeStamp);
 		paramMap.put("groupId", 1);
-		paramMap.put("pageSize", 10);
+		paramMap.put("pageSize", 4);
 		paramMap.put("pageNum",1);
 		//paramMap.put("uaInfo",MD5Util.digest("dragon").toLowerCase());
 		String t1 = JSON.toJSONString(paramMap);
@@ -153,16 +178,14 @@ private static final String url = "http://localhost:8080/nlc_read_home/service.d
 		this.excute(cmd);
 	}
 	@Test
-	public void qrySiteAdvertList() {
+	public void qrySiteAdvertInfo() {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("timeStamp", timeStamp);
-		paramMap.put("pageSize", 10);
-		paramMap.put("pageNum",1);
-		paramMap.put("navId",1);
+		paramMap.put("navId",241);
 		//paramMap.put("uaInfo",MD5Util.digest("dragon").toLowerCase());
 		String t1 = JSON.toJSONString(paramMap);
-		datas.put("qrySiteAdvertList", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
-		String cmd = "qrySiteAdvertList";
+		datas.put("qrySiteAdvertInfo", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
+		String cmd = "qrySiteAdvertInfo";
 		this.excute(cmd);
 	}
 
@@ -511,12 +534,15 @@ private static final String url = "http://localhost:8080/nlc_read_home/service.d
 	public void qryColumnResList() {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("timeStamp", timeStamp);
-		paramMap.put("columnId", 1);
+		paramMap.put("columnId", 1020);
 		//paramMap.put("columnCode","xstj");
 		//paramMap.put("columnCode","rmtj");
-		paramMap.put("columnCode","xttj");
-		paramMap.put("pageSize", 100);
+		//paramMap.put("columnCode","xttj");
+		paramMap.put("columnCode","gltj");
+		paramMap.put("categoryId",468);
+		paramMap.put("pageSize", 10);
 		paramMap.put("pageNum", 1);
+		paramMap.put("resId",7066);
 		String t1 = JSON.toJSONString(paramMap);
 		datas.put("qryColumnResList", DESUtil.encrypt(t1, Constants.WEB_PUBLIC_DES_KEY));
 		String cmd = "qryColumnResList";
@@ -572,6 +598,9 @@ private static final String url = "http://localhost:8080/nlc_read_home/service.d
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("timeStamp", timeStamp);
 		paramMap.put("navId", 1L);
+		paramMap.put("showType",0);
+		//paramMap.put("clientOs",);
+		//paramMap.put("versionCode",);
 		String t3 = JSON.toJSONString(paramMap);
 		datas.put("qryBannerList", DESUtil.encrypt(t3, Constants.WEB_PUBLIC_DES_KEY));
 		String cmd = "qryBannerList";
@@ -658,7 +687,7 @@ private static final String url = "http://localhost:8080/nlc_read_home/service.d
 	public void qryChapterDetails() {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("timeStamp", timeStamp);
-		paramMap.put("chapterId", 326L);
+		paramMap.put("chapterId", 508L);
 		String t21 = JSON.toJSONString(paramMap);
 		datas.put("qryChapterDetails", DESUtil.encrypt(t21, Constants.WEB_PUBLIC_DES_KEY));
 		String cmd = "qryChapterDetails";
